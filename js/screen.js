@@ -25,7 +25,7 @@ define(['zepto'], function ($) {
             var
                 i,
                 $screen = this.$screen,
-                sWidth = (this.width - 10 * n) / n,
+                sWidth = (this.width - 6 * n) / n,
                 $row = $('<div class="row"></div>'),
                 $square = $('<div class="square js-square"></div>');
 

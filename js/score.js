@@ -11,11 +11,11 @@ define(['zepto', 'storage'], function ($, Storage) {
     	init: function () {
     		var
     			storage = new Storage(),
-    			curLevel = storage.load('curLevel') || 1,
-    			supLevel = storage.load('supLevel') || 1,
-    			supClick = storage.load('supClick') || 0,
-    			curClick = storage.load('curClick') || 0,
-    			totalClick = storage.load('totalClick') || 0,
+    			curLevel = parseInt(storage.load('curLevel'), 10) || 1,
+    			supLevel = parseInt(storage.load('supLevel'), 10) || 1,
+    			supClick = parseInt(storage.load('supClick'), 10) || 0,
+    			curClick = parseInt(storage.load('curClick'), 10) || 0,
+    			totalClick = parseInt(storage.load('totalClick'), 10) || 0,
     			$curLevel = $('#cur-level'),
     			$supLevel = $('#sup-level'),
     			$curClick = $('#cur-click'),
@@ -60,7 +60,7 @@ define(['zepto', 'storage'], function ($, Storage) {
     		}
 
     		this.save();
-
+			this.updateView();
     		return this.curLevel;
     	},
     	resetLevel: function () {

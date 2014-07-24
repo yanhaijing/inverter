@@ -54,7 +54,7 @@ h1{
 }
 .screen{
     clear:both;
-    padding:5px;
+    padding:3px;
     border-radius:4px;
     background:#4D4D4D;
 }
@@ -63,7 +63,7 @@ h1{
 }
 .square{
     float:left;
-    margin:5px;
+    margin:3px;
     border-radius: 3px;
     background-color: rgb(230, 171, 94);
     cursor:pointer;

@@ -21,5 +21,7 @@ require(['zepto', 'screen', 'score'], function ($, Screen, Score) {
     	var level = score.addLevel();
 
     	screen.create(level);
+    }).on('screen/click', function () {
+    	score.addClick();
     });
 });
