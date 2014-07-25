@@ -30,7 +30,7 @@ define(['zepto'], function ($) {
                 $square = $('<div class="square js-square"></div>');
 
             if (this.n && this.n === n) {
-                this.squares.removeClass('square-active');
+                this.$squares.removeClass('square-active');
                 return 0;
             }
 
@@ -95,10 +95,10 @@ define(['zepto'], function ($) {
                 }
             }
 
-            $screen.on('click', '.js-square', function (e) {
+            $screen.on('tap', '.js-square', function (e) {
                 var $this = $(this);
                 clickCallback($this, self.$squares, self.n);
-            });
+            });          
         }
     });
 

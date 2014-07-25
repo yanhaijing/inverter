@@ -64,11 +64,15 @@ define(['zepto', 'storage'], function ($, Storage) {
     		return this.curLevel;
     	},
     	resetLevel: function () {
-    		this.curLevel = 1;
-			this.curClick = 0;
-			this.totalClick = storage.load('totalClick') || 0;
+            var
+                storage = this.storage;
+    		this.curLevel = parseInt(storage.load('curLevel'), 10) || 1;
+			this.curClick = parseInt(storage.load('curClick'), 10) || 0;
+			this.totalClick = parseInt(storage.load('totalClick'), 10) || 0;
 
 			this.updateView();
+
+            return this.curLevel;
     	},
 
     	reset: function () {

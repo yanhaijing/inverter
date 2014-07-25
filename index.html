@@ -7,7 +7,7 @@
 		Remove this if you use the .htaccess -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-		<title>Inverter</title>
+		<title>魔幻方块</title>
 		<meta name="description" content="">
 		<meta name="author" content="YANXUEFENG">
 
@@ -24,7 +24,7 @@
 	<body>
 		<div class="container">
 			<header>
-				<h1>Inverter</h1>
+				<h1>魔幻方块</h1>
 			</header>
 			<aside class="score">
 				<ul>
@@ -35,9 +35,9 @@
 				</ul>
 			</aside>
 			<div class="menu">
-				<button id="restart-level">重玩本关</button>
-				<button id="restart-game">重玩游戏</button>
-				<button>游戏介绍</button>
+				<button id="pop-restart-level" class="btn btn-primary">重玩本关</button>
+				<button id="pop-restart-game" class="btn btn-primary">重玩游戏</button>
+				<button id="pop-intro" class="btn btn-primary">游戏介绍</button>
 			</div>
 			<section id="screen" class="screen">
 
@@ -45,7 +45,79 @@
 			<footer>
 				<p>copyright@2014 yanhaijing</p>
 			</footer>
+			<div id="pop-wrap" class="pop-wrap">
+			</div>
+			<div id="restart-game-pop" class="pop js-pop">
+				<div class="pop-content">
+					<header>
+						<h2>提示信息</h2>
+					</header>
+					<div class="pop-body">
+						重玩游戏，会把你传送到第一关哦？
+					</div>
+					<footer>
+						<button id="restart-game" class="btn btn-success">好</button>
+					</footer>
+				</div>				
+			</div>
+			<div id="restart-level-pop" class="pop js-pop">
+				<div class="pop-content">
+					<header>
+						<h2>提示信息</h2>
+					</header>
+					<div class="pop-body">
+						确定重玩本关吗？
+					</div>
+					<footer>
+						<button id="restart-level" class="btn btn-success">好</button>
+					</footer>
+				</div>				
+			</div>
+			<div id="intro-pop" class="pop js-pop">
+				<div class="pop-content">
+					<header>
+						<h2>提示信息</h2>
+					</header>
+					<div class="pop-body">
+						<ol>
+							<li>点击色块，会改变其自身和上下左右相邻色块的颜色</li>
+							<li>全部色块变为蓝色代表胜利</li>
+							<li>可重玩本关，及重头开始</li>
+						</ol>
+					</div>
+					<footer>
+						<button id="intro" class="btn btn-success">我知道了</button>
+					</footer>
+				</div>				
+			</div>
+			<div id="success-pop" class="pop js-pop">
+				<div class="pop-content">
+					<header>
+						<h2>恭喜过关</h2>
+					</header>
+					<div class="pop-body js-pop-body">
+						即将进入第2关
+					</div>
+					<footer>
+						<button class="btn btn-success">马上进入</button>
+					</footer>
+				</div>						
+			</div>
+			<div id="hightLevel-pop" class="pop js-pop">
+				<div class="pop-content">
+					<header>
+						<h2>新纪录</h2>
+					</header>
+					<div class="pop-body js-pop-body">
+						恭喜您创造了新记录
+					</div>
+					<footer>
+						<button class="btn btn-success">继续</button>
+						<button class="btn btn-success">分享</button>
+					</footer>
+				</div>						
+			</div>
 		</div>
-		<script src="js/require.js" data-main="js/index"></script>
+		<script src="js/require.js" data-main="js/main"></script>
 	</body>
 </html>
