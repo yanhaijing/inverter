@@ -9,12 +9,13 @@ require.config({
         }
     }
 });
-require(['zepto', 'screen', 'score'], function ($, Screen, Score) {
+require(['zepto', 'screen', 'score', 'sound'], function ($, Screen, Score, Sound) {
 	var
 		screen = new Screen,
 		score = new Score,
         $pops = $('.js-pop'),
-        $popWrap = $('#pop-wrap');
+        $popWrap = $('#pop-wrap'),
+        sound = new Sound;
     $(function () {
     	var level = score.getLevel();
     	screen.create(level);
@@ -32,38 +33,39 @@ require(['zepto', 'screen', 'score'], function ($, Screen, Score) {
         }, 2000);
     }).on('screen/click', function () {
     	score.addClick();
+        sound.play('media/click.wav');
     }).on('score/hightLevel', function () {
         $popWrap.show();
         $('#hightLevel-pop').show();
     });
 
-    $pops.on('tap', function () {
+    $pops.on('tap', function (e) {
         $pops.hide();
         $popWrap.hide();
         e.preventDefault();
     });
-    $('#restart-game').on('tap', function () {
+    $('#restart-game').on('tap', function (e) {
         score.reset();
         screen.create(1);
         e.preventDefault();
     });
-    $('#pop-restart-game').on('click', function (e) {
+    $('#pop-restart-game').on('tap', function (e) {
         $popWrap.show();
         $('#restart-game-pop').show();
         e.preventDefault();
     });
 
-    $('#restart-level').on('tap', function () {
+    $('#restart-level').on('tap', function (e) {
         screen.create(score.resetLevel());
         e.preventDefault();
     });
-    $('#pop-restart-level').on('tap', function () {
+    $('#pop-restart-level').on('tap', function (e) {
         $popWrap.show();
         $('#restart-level-pop').show();
         e.preventDefault();
     });
 
-    $('#pop-intro').on('tap', function () {
+    $('#pop-intro').on('tap', function (e) {
         $popWrap.show();
         $('#intro-pop').show();
         e.preventDefault();
