@@ -52,10 +52,19 @@ ul{
 .container{
     margin:auto;
     padding:0 10px;
-    max-width:768px;
+    max-width:600px;
 }
 h1{
     font-family: Microsoft Yahei,tahoma,sans-serif;
+}
+.share{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url('img/share.png');
+    background-size: 100% 100%;
+    text-indent: -999px;
+    vertical-align: middle;
 }
 .score{
     float:right;
