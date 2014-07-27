@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.yanhaijing.inverter" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.yanhaijing.inverter" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>变色方块</name>
     <description>
         变色方块是一款休闲益智小游戏，适合所有人群，点击方块会改变方块颜色，将所有方块变为蓝色即为胜利。

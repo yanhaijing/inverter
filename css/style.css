@@ -4,6 +4,9 @@ body{
 ul{
     list-style:none;
 }
+a{
+    text-decoration: none;
+}
 .btn{
     display: inline-block;
     margin-bottom: 0;
@@ -96,7 +99,6 @@ h1{
     margin:3px;
     border-radius: 3px;
     background-color: rgb(230, 171, 94);
-    cursor:pointer;
 }
 .square-active{
     background-color: rgb(92, 144, 255);
