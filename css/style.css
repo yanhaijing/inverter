@@ -149,3 +149,24 @@ footer{
     text-align: right;
     border-top: 1px solid #e5e5e5;
 }
+/*S share-btn*/
+.share-btn a em {background-image: url(img/sns_icon.png);background-repeat: no-repeat;}
+.share-btn {padding: 1em 0 1em;width:100%;overflow:hidden;zoom:1;}
+.share-btn a {background-color: #fff;border: 1px solid #f1eddf;border-radius: 4px;box-shadow: 0 1px 3px #f1eddf;color: #fff;cursor: pointer;display: block;float: left;font-size: 1em;height: 30px;line-height: 30px;text-align: center;text-decoration: none;width: 30%;}
+.share-btn a.share-btn-weibo,
+.share-btn a.share-btn-qq,
+.share-btn a.share-btn-weixin{margin-right: 2%;}
+.share-btn a span {border-radius: 4px 0 0 4px;float: left;text-indent: 5px;width: 60%;}
+.share-btn a.share-btn-weibo span {background-color: #ff2125;}
+.share-btn a.share-btn-qq span {background-color: #21aeff;}
+.share-btn a.share-btn-weixin span {background-color: #3ebd06;}
+.share-btn a em {background-position: 0 0;display: block;float: right;height: 26px;margin: 2px 8px 0 0;width: 30%;}
+.share-btn a.share-btn-weibo em {background-position: 0 -32px;}
+.share-btn a.share-btn-weixin em {background-position: 0 -65px;}
+/*E share-btn*/
+#weixin-shade {display:none;position:fixed; top: 0;bottom:0;left: 0;right:0; overflow-y: auto;overflow-x: hidden;text-align: center;color:#fff;background:rgba(0,0,0,0.5)}
+#weixin-shade-qr div {font-size:2.4em; text-align: center; margin-top: 1em;}
+#weixin-shade-qr img {display: block; width: 50%; max-width:300px;margin:2em auto;}
+#weixin-shade .step .num{display: inline-block;margin:.5em auto; font-size: 3em; width: 1.5em; height: 1.5em; line-height: 1.5em; border-radius: 1em; background-color: #aaa; color: #000; }
+#weixin-shade .step div{font-size:2em;}
+#weixin-shade .step img{display: block; width: 70%; max-width:400px;margin:2em auto;}

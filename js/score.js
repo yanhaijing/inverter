@@ -56,7 +56,7 @@ define(['zepto', 'storage'], function ($, Storage) {
     		if (this.curLevel > this.supLevel || (this.curLevel === this.supLevel && this.supClick > this.totalClick)) {
     			this.supLevel = this.curLevel;
     			this.supClick = this.totalClick;
-			  	$(document).trigger('score/hightLevel');		
+			  	$(document).trigger('score/hightLevel', [this.supLevel, this.supClick]);		
     		}
 
     		this.save();
