@@ -42,7 +42,7 @@ define(['zepto'], function ($) {
             }
 
             for(i = 0; i < n; i++) {
-                $screen.append($row.clone());
+                $screen.append($row.clone(true, true));
             }
 
             this.$squares = $screen.find('.js-square');
@@ -50,7 +50,8 @@ define(['zepto'], function ($) {
         bindEvent: function () {
             var
                 $screen = this.$screen,
-                self = this;
+                self = this,
+                click = document.hasOwnProperty("ontouchstart") ? 'tap' : 'click';
 
             function check($squares) {
                 return $squares.not('.square-active').length > 0 ? false : true;
@@ -94,10 +95,10 @@ define(['zepto'], function ($) {
                     $(document).trigger('screen/success');//派发胜利事件事件
                 }
             }
-
-            $screen.on('tap', '.js-square', function (e) {
+            $screen.on(click, '.js-square', function (e) {
                 var $this = $(this);
                 clickCallback($this, self.$squares, self.n);
+                e.preventDefault();
             });          
         }
     });

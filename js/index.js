@@ -3,7 +3,7 @@
  */
 
 require.config({
-    shim: {
+    shim:{
         'zepto': {
             exports: 'Zepto'
         }
@@ -14,7 +14,8 @@ require(['zepto', 'screen', 'score'], function ($, Screen, Score) {
 		screen = new Screen,
 		score = new Score,
         $pops = $('.js-pop'),
-        $popWrap = $('#pop-wrap');
+        $popWrap = $('#pop-wrap'),
+        click = document.hasOwnProperty("ontouchstart") ? 'tap' : 'click';
     $(function () {
     	var level = score.getLevel();
     	screen.create(level);
@@ -37,43 +38,42 @@ require(['zepto', 'screen', 'score'], function ($, Screen, Score) {
         $('#hightLevel-pop').show();
     });
 
-    $pops.on('tap', function (e) {
+    $pops.on(click, function (e) {
         $pops.hide();
         $popWrap.hide();
         e.preventDefault();
     });
-    $('#restart-game').on('tap', function (e) {
+    $('#restart-game').on(click, function (e) {
         score.reset();
         screen.create(1);
         e.preventDefault();
     });
-    $('#pop-restart-game').on('tap', function (e) {
+    $('#pop-restart-game').on(click, function (e) {
         $popWrap.show();
         $('#restart-game-pop').show();
         e.preventDefault();
     });
 
-    $('#restart-level').on('tap', function (e) {
+    $('#restart-level').on(click, function (e) {
         screen.create(score.resetLevel());
         e.preventDefault();
     });
-    $('#pop-restart-level').on('tap', function (e) {
+    $('#pop-restart-level').on(click, function (e) {
         $popWrap.show();
         $('#restart-level-pop').show();
         e.preventDefault();
     });
 
-    $('#pop-intro').on('tap', function (e) {
+    $('#pop-intro').on(click, function (e) {
         $popWrap.show();
         $('#intro-pop').show();
         e.preventDefault();
     });
-    $('#share').on('tap', function (e) {
+    $('#share').on(click, function (e) {
         e.preventDefault();
-        window.plugins.socialsharing.share('我正在玩变色方块小游戏，非常有趣，难度很大，快来试试吧 http://yanhaijing.com @颜海镜')
+        
     });
-    $('#hight-share').on('tap', function (e) {
-        e.preventDefault();
-        window.plugins.socialsharing.share('我在变色方块游戏中创造了新纪录，逆天用了' + score.supClick +'次点击，完成了第' + score.supLevel + '关' + '快来挑战我吧，http://yanhaijing.com @颜海镜')
+    $('#hight-share').on(click, function (e) {
+        e.preventDefault();       
     });
 });
