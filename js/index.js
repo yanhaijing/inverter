@@ -14,7 +14,6 @@ require(['zepto', 'screen', 'score'], function ($, Screen, Score) {
 		screen = new Screen,
 		score = new Score,
         $pops = $('.js-pop'),
-        $popWrap = $('#pop-wrap'),
         click = document.hasOwnProperty("ontouchstart") ? 'tap' : 'click';
 
     function updateShare(level, click) {
@@ -37,26 +36,24 @@ require(['zepto', 'screen', 'score'], function ($, Screen, Score) {
     });
 
     $(document).on('screen/success', function () {
-    	var level = score.addLevel();    
-    	screen.create(level);
-        $popWrap.show();
-        $('#success-pop').find('.js-pop-body').html('即将进入第' + level + '关')
+        var level;
         $('#success-pop').show();
+    	level = score.addLevel();       	
+        $('#success-pop').find('.js-pop-body').html('即将进入第' + level + '关')
+        screen.create(level);
         window.setTimeout(function () {
             $('#success-pop').hide();
-            $popWrap.hide();
         }, 2000);
     }).on('screen/click', function () {
     	score.addClick();
     }).on('score/hightLevel', function (e, level, click) {
-        $popWrap.show();
+        $('#success-pop').hide();
         $('#hightLevel-pop').show();
         updateShare(level, click);
     });
 
     $pops.on(click, function (e) {
-        $pops.hide();
-        $popWrap.hide();
+        $(this).hide();
         e.preventDefault();
     });
     $('#restart-game').on(click, function (e) {
@@ -65,7 +62,6 @@ require(['zepto', 'screen', 'score'], function ($, Screen, Score) {
         e.preventDefault();
     });
     $('#pop-restart-game').on(click, function (e) {
-        $popWrap.show();
         $('#restart-game-pop').show();
         e.preventDefault();
     });
@@ -75,13 +71,11 @@ require(['zepto', 'screen', 'score'], function ($, Screen, Score) {
         e.preventDefault();
     });
     $('#pop-restart-level').on(click, function (e) {
-        $popWrap.show();
         $('#restart-level-pop').show();
         e.preventDefault();
     });
 
     $('#pop-intro').on(click, function (e) {
-        $popWrap.show();
         $('#intro-pop').show();
         e.preventDefault();
     });
@@ -89,19 +83,20 @@ require(['zepto', 'screen', 'score'], function ($, Screen, Score) {
         e.stopPropagation();
     });
     $('#share').on(click, function (e) {
-        $popWrap.show();
         $('#share-pop').show();
         e.preventDefault();        
     });
     $('#hight-share').on(click, function (e) {
-        $popWrap.show();
         $('#share-pop').show();
         e.preventDefault(); 
         e.stopPropagation();      
     });
     $('#share-weixin').on(click, function (e) {
+        $('#share-pop').hide();
+        $('#hightLevel-pop').hide();
         $('#weixin-shade').show();
-        e.preventDefault();       
+        e.preventDefault(); 
+        e.stopPropagation();      
     });
     $('#weixin-shade').on(click, function (e) {
         $('#weixin-shade').hide();
