@@ -26,11 +26,13 @@ require(['zepto', 'screen', 'score'], function ($, Screen, Score) {
             qqTitle = encodeURIComponent('变色方块'),
             weibo = 'http://service.weibo.com/share/share.php?url=' + url + '&title=' + weiboTitle + '&pic=' + pic,
             qq = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + url + '&desc=' + desc + '&title=' + qqTitle + '&summary=' + summary + '&pic=' + pic,
-            duoshuo = 'http://yanhaijing.com/inverter ' + '我在变色方块小游戏中，逆天用了' + click + '次点击，通过了第' + (level - 1) + '关，你，你，你快快来挑战我吧@颜海镜 ';
+            duoshuo = 'http://yanhaijing.com/inverter ' + '我在变色方块小游戏中，逆天用了' + click + '次点击，通过了第' + (level - 1) + '关，你，你，你快快来挑战我吧@颜海镜 ',
+            title = '变色方块 ' + '我在变色方块小游戏中，逆天用了' + click + '次点击，通过了第' + (level - 1) + '关，你，你，你快快来挑战我吧';
 
         $('#share-weibo').attr('href', weibo);
         $('#share-qq').attr('href', qq);
         $('.ds-thread textarea').val(duoshuo);
+        document.title = title;
     }
     $(function () {
     	var level = score.getLevel();
