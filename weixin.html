@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>变色方块</title>
+		<meta name="description" content="变色方块是一款休闲益智小游戏，适合所有人群，点击方块会改变方块（和上下左右）的颜色，将所有方块变为蓝色即为胜利，快快开动你的脑筋，来挑战吧，超有难度哦">
+		<meta name="author" content="yanhaijing">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no",maximum-scale=1, minimum-scale=1>
+
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+
+	<body>
+		<div class="container">
+			<iframe src="http://rcm-cn.amazon-adsystem.com/e/cm?t=yanhaijing-23&o=28&p=48&l=ez&f=ifr&f=ifr" width="728" height="90" scrolling="no" marginwidth="0" marginheight="0" border="0" frameborder="0" style="border:none;max-width:100%;"></iframe>
+			<header>
+				<h1>
+					变色方块
+					<a id="share" class="share">分享</a>
+				</h1>
+			</header>
+			<aside class="score">
+				<ul>
+					<li>当前关卡：<span id="cur-level">1</span></li>
+					<li>历史最好：<span id="sup-level">1（0次点击）</span></li>
+					<li>当前点击：<span id="cur-click">0</span></li>
+					<li>总共点击：<span id="total-click">0</span></li>
+				</ul>
+			</aside>
+			<div class="menu">
+				<a id="pop-restart-level" class="btn btn-primary">重玩本关</a>
+				<a id="pop-restart-game" class="btn btn-primary">重玩游戏</a>
+				<a id="pop-intro" class="btn btn-primary">游戏介绍</a>
+			</div>
+			<section id="screen" class="screen">
+
+			</section>
+			<footer>
+				<p>copyright&copy;2014 <a href="http://yanhaijing.com" target="_blank">yanhaijing.com</a></p>
+			</footer>
+			<div id="restart-game-pop" class="pop js-pop">
+				<div class="pop-content">
+					<header>
+						<h2>提示信息</h2>
+					</header>
+					<div class="pop-body">
+						重玩游戏，会把你传送到第一关哦？
+					</div>
+					<footer>
+						<a id="restart-game" class="btn btn-success">好</a>
+					</footer>
+				</div>
+			</div>
+			<div id="restart-level-pop" class="pop js-pop">
+				<div class="pop-content">
+					<header>
+						<h2>提示信息</h2>
+					</header>
+					<div class="pop-body">
+						确定重玩本关吗？
+					</div>
+					<footer>
+						<a id="restart-level" class="btn btn-success">好</a>
+					</footer>
+				</div>
+			</div>
+			<div id="intro-pop" class="pop js-pop">
+				<div class="pop-content">
+					<header>
+						<h2>提示信息</h2>
+					</header>
+					<div class="pop-body">
+						<ol>
+							<li>点击色块，会改变其自身和上下左右相邻色块的颜色</li>
+							<li>全部色块变为蓝色代表胜利</li>
+							<li>可重玩本关，及重头开始</li>
+						</ol>
+					</div>
+					<footer>
+						<a id="intro" class="btn btn-success">我知道了</a>
+					</footer>
+				</div>
+			</div>
+			<div id="success-pop" class="pop js-pop">
+				<div class="pop-content">
+					<header>
+						<h2>恭喜过关</h2>
+					</header>
+					<div class="pop-body js-pop-body">
+						即将进入第2关
+					</div>
+					<footer>
+						<a class="btn btn-success">马上进入</a>
+					</footer>
+				</div>
+			</div>
+			<div id="hightLevel-pop" class="pop js-pop">
+				<div class="pop-content">
+					<header>
+						<h2>新纪录</h2>
+					</header>
+					<div class="pop-body js-pop-body">
+						恭喜您创造了新记录
+					</div>
+					<footer>
+						<a class="btn btn-success">继续</a>
+						<a id="hight-share" class="btn btn-primary">分享</a>
+					</footer>
+				</div>
+			</div>
+			<div id="share-pop" class="pop js-pop">
+				<div class="pop-content">
+					<header>
+						<h2>分享</h2>
+					</header>
+					<div class="pop-body js-pop-body">
+						<p class="share-btn clearfix">
+							<a id="share-weibo" class="js-share-btn share-btn-weibo clearfix" href="http://service.weibo.com/share/share.php?url=http://yanhaijing.com/inverter&title=我正在玩变色方块小游戏，相当有意思，快快来体验吧@颜海镜 &pic=media/5.png" target="_blank">
+		                        <span>微博</span><em></em>
+		                    </a>
+		                    <a id="share-qq" class="js-share-btn share-btn-qq clearfix" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yanhaijing.com/inverter&desc=我正在玩变色方块小游戏，相当有意思，快快来体验吧&title=变色方块&summary=变色方块小游戏&pic=media/5.png" target="_blank">
+		                        <span>空间</span><em></em>
+		                    </a>
+		                    <a id="share-weixin" class="share-btn-weixin clearfix">
+		                        <span>微信</span><em></em>
+		                    </a>
+		                </p>
+					</div>
+					<footer>
+						<a class="btn btn-success">关闭</a>
+					</footer>
+				</div>
+			</div>
+		</div>
+		<div id="weixin-shade">
+			<div id="weixin-shade-qr">
+				<img src="img/qrcode.png">
+			</div>
+			<div id="weixin-shade-step1" class="step">
+				<span class="num">1</span>
+				<div>扫描上方二维码</div>
+				<img src="img/ww_03.png">
+			</div>
+			<div id="weixin-shade-step2" class="step">
+				<span class="num">2</span>
+				<div>点击右上角分享按钮</div>
+			</div>
+			<div id="weixin-shade-step3" class="step">
+				<span class="num">3</span>
+				<div>分享给好友或朋友圈</div>
+			</div>
+		</div>
+		<script src="js/require-min.js" data-main="js/main"></script>
+		<script src="js/baidu.js"></script>
+	</body>
+</html>
