@@ -9,8 +9,8 @@ module.exports = function(grunt) {
             ' * <%= pkg.name %>\n' +
             ' * Description: <%= pkg.description %>\n' +
             ' * Author: <%= pkg.author %>\n' +
-            ' * Version: <%= pkg.version %>\n' + 
-            ' * Last Changed by <%= pkg.lastChange %>\n' + 
+            ' * Version: <%= pkg.version %>\n' +
+            ' * Last Changed by <%= pkg.lastChange %>\n' +
             ' * Last Update : <%= grunt.template.today("yyyy-mm-dd hh:MM:ss") %>\n'+
             ' */',
     clean:{
@@ -78,7 +78,7 @@ module.exports = function(grunt) {
         files: [
           {src: ['<%= pkg.path.dest.css %>*.css']}
         ]
-      }     
+      }
     },
     csscomb: {
       options: {
@@ -219,7 +219,7 @@ module.exports = function(grunt) {
         src: '<%= pkg.path.src.js %>**.js'
       }
     },
-    concat: {   
+    concat: {
       css: {
         files:[
           {src: ['<%= pkg.path.src.css %>*.css', '!<%= pkg.path.src.css %>ie.css'], dest: '<%= pkg.path.dest.css %>style.css'},
@@ -245,7 +245,7 @@ module.exports = function(grunt) {
         src: '<%= concat.js.dest %>',
         dest: '<%= pkg.path.dest.js %>js.min.js'
       }
-    },    
+    },
     validation: {
       options: {
         charset: 'utf-8',
@@ -281,6 +281,16 @@ module.exports = function(grunt) {
           name: 'index', // assumes a production build using almond
           out: '<%= pkg.path.build.js %>main.js'
         }
+      },
+      weixin: {
+        options: {
+          baseUrl: '<%= pkg.path.src.js %>',
+          paths: {
+            zepto: "empty:"
+          },
+          name: 'weixin', // assumes a production build using almond
+          out: '<%= pkg.path.build.js %>weixin-main.js'
+        }
       }
     }
   });
@@ -290,7 +300,7 @@ module.exports = function(grunt) {
     grunt.file.write("./dist/css/style.min.css", output, {"./dist/css/style.min.css": 'utf8'});
   });
   // 任务加载
-  require('load-grunt-tasks')(grunt, {scope: 'devDependencies'}); 
+  require('load-grunt-tasks')(grunt, {scope: 'devDependencies'});
   grunt.registerTask('dev-less', ['clean:less', 'less', 'autoprefixer:less', 'csscomb:less', 'csslint:less', 'copy:devless']);
   grunt.registerTask('build-less', ['clean:less', 'less', 'autoprefixer:less', 'csscomb:less', 'cssmin:less', 'cssformat:less', 'usebanner:less', 'csslint:less', 'copy:less']);
   grunt.registerTask('dev-css', ['clean:css', 'concat:css', 'autoprefixer:css', 'csscomb:css', 'cssmin:css', 'cssformat:css', 'csslint:css', 'copy:devcss']);
