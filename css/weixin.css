@@ -148,8 +148,6 @@ footer {
     left: 0;
     right: 0;
     z-index: 10001;
-    overflow-y: auto;
-    overflow-x: hidden;
     text-align: center;
     color: #fff;
     background: rgba(0,0,0,0.5)
