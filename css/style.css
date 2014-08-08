@@ -30,6 +30,12 @@ a {
     color: #333;
     text-decoration: none;
 }
+.btn-lg{
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 6px;
+}
 .btn-primary {
     color: #fff;
     background-color: #428bca;
@@ -102,6 +108,16 @@ h1 {
 }
 .square-active {
     background-color: rgb(92, 144, 255);
+}
+.download figure{
+    width:140px;
+}
+.download figcaption{
+    text-align: center;
+}
+.download img{
+    width:140px;
+    height:140px;
 }
 footer {
     text-align: center;
