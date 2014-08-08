@@ -20,7 +20,7 @@ require(['zepto', 'screen', 'score'], function ($, Screen, Score) {
         var
             url = encodeURIComponent('http://yanhaijing.com/inverter'),
             weiboTitle = encodeURIComponent('变色方块 史上最难智力游戏，我逆天用了' + click + '次点击，通过了第' + (level - 1) + '关，你，你，你快快来挑战我吧@颜海镜 '),
-            pic = encodeURIComponent('media/5.png'),
+            pic = encodeURIComponent('http://yanhaijing.com/inverter/media/5.png'),
             desc = encodeURIComponent('变色方块 史上最难智力游戏，我逆天用了' + click + '次点击，通过了第' + (level - 1) + '关，你，你，你快快来挑战我吧'),
             summary = encodeURIComponent('变色方块 史上最难智力游戏'),
             qqTitle = encodeURIComponent('变色方块 史上最难智力游戏'),
