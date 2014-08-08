@@ -19,15 +19,15 @@ require(['zepto', 'screen', 'score'], function ($, Screen, Score) {
     function updateShare(level, click) {
         var
             url = encodeURIComponent('http://yanhaijing.com/inverter'),
-            weiboTitle = encodeURIComponent('我在变色方块小游戏中，逆天用了' + click + '次点击，通过了第' + (level - 1) + '关，你，你，你快快来挑战我吧@颜海镜 '),
+            weiboTitle = encodeURIComponent('变色方块 史上最难智力游戏，我逆天用了' + click + '次点击，通过了第' + (level - 1) + '关，你，你，你快快来挑战我吧@颜海镜 '),
             pic = encodeURIComponent('media/5.png'),
-            desc = encodeURIComponent('我在变色方块小游戏中，逆天用了' + click + '次点击，通过了第' + (level - 1) + '关，你，你，你快快来挑战我吧'),
-            summary = encodeURIComponent('变色方块小游戏'),
-            qqTitle = encodeURIComponent('变色方块'),
+            desc = encodeURIComponent('变色方块 史上最难智力游戏，我逆天用了' + click + '次点击，通过了第' + (level - 1) + '关，你，你，你快快来挑战我吧'),
+            summary = encodeURIComponent('变色方块 史上最难智力游戏'),
+            qqTitle = encodeURIComponent('变色方块 史上最难智力游戏'),
             weibo = 'http://service.weibo.com/share/share.php?url=' + url + '&title=' + weiboTitle + '&pic=' + pic,
             qq = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + url + '&desc=' + desc + '&title=' + qqTitle + '&summary=' + summary + '&pic=' + pic,
-            duoshuo = 'http://yanhaijing.com/inverter ' + '我在变色方块小游戏中，逆天用了' + click + '次点击，通过了第' + (level - 1) + '关，你，你，你快快来挑战我吧@颜海镜 ',
-            title = '变色方块 ' + '我在变色方块小游戏中，逆天用了' + click + '次点击，通过了第' + (level - 1) + '关，你，你，你快快来挑战我吧';
+            duoshuo = 'http://yanhaijing.com/inverter ' + '变色方块 史上最难智力游戏，我逆天用了' + click + '次点击，通过了第' + (level - 1) + '关，你，你，你快快来挑战我吧@颜海镜 ',
+            title = '变色方块 史上最难智力游戏，我逆天用了' + click + '次点击，通过了第' + (level - 1) + '关，你，你，你快快来挑战我吧';
 
         $('#share-weibo').attr('href', weibo);
         $('#share-qq').attr('href', qq);
@@ -42,7 +42,7 @@ require(['zepto', 'screen', 'score'], function ($, Screen, Score) {
     $(document).on('screen/success', function () {
         var level;
         $('#success-pop').show();
-    	level = score.addLevel();       	
+    	level = score.addLevel();
         $('#success-pop').find('.js-pop-body').html('即将进入第' + level + '关')
         screen.create(level);
         window.setTimeout(function () {
@@ -88,22 +88,22 @@ require(['zepto', 'screen', 'score'], function ($, Screen, Score) {
     });
     $('#share').on(click, function (e) {
         $('#share-pop').show();
-        e.preventDefault();        
+        e.preventDefault();
     });
     $('#hight-share').on(click, function (e) {
         $('#share-pop').show();
-        e.preventDefault(); 
-        e.stopPropagation();      
+        e.preventDefault();
+        e.stopPropagation();
     });
     $('#share-weixin').on(click, function (e) {
         $('#share-pop').hide();
         $('#hightLevel-pop').hide();
         $('#weixin-shade').show();
-        e.preventDefault(); 
-        e.stopPropagation();      
+        e.preventDefault();
+        e.stopPropagation();
     });
     $('#weixin-shade').on(click, function (e) {
         $('#weixin-shade').hide();
-        e.preventDefault();       
+        e.preventDefault();
     });
 });

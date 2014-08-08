@@ -17,7 +17,7 @@ require(['zepto', 'screen', 'score'], function ($, Screen, Score) {
         click = 'tap';
 
     function updateShare(level, click) {
-        var title = '变色方块 史上最难智力游戏，' + '我逆天用了' + click + '次点击，通过了第' + (level - 1) + '关，你，你，你快快来挑战我吧';
+        var title = '变色方块 史上最难智力游戏，我逆天用了' + click + '次点击，通过了第' + (level - 1) + '关，你，你，你快快来挑战我吧';
         document.title = title;
     }
     $(function () {
