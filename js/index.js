@@ -63,11 +63,11 @@ require(['zepto', 'screen', 'score'], function ($, Screen, Score) {
     });
     $('#share').on('tap', function (e) {
         e.preventDefault();
-        window.plugins.socialsharing.share('我正在玩变色方块小游戏，非常有趣，难度很大，快来试试吧 http://yanhaijing.com/inverter @颜海镜')
+        window.plugins.socialsharing.share('变色方块 史上最难智力游戏，非常有趣，快快来体验吧 http://yanhaijing.com/inverter @颜海镜')
     });
     $('#hight-share').on('tap', function (e) {
         e.preventDefault();
         e.stopPropagation();
-        window.plugins.socialsharing.share('我在变色方块游戏中创造了新纪录，逆天用了' + score.supClick +'次点击，完成了第' + (score.supLevel - 1) + '关' + '快来挑战我吧，http://yanhaijing.com/inverter @颜海镜')
+        window.plugins.socialsharing.share('变色方块 史上最难智力游戏，我逆天用了' + score.supClick +'次点击，通过了第' + (score.supLevel - 1) + '关，你，你，你快快来挑战我吧，http://yanhaijing.com/inverter @颜海镜')
     });
 });
