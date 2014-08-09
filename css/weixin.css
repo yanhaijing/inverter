@@ -133,6 +133,10 @@ footer {
 }
 .pop-body {
     padding: 15px;
+    line-height:1.5;
+}
+.pop-body li{
+    margin-bottom: 5px;
 }
 .pop footer {
     padding: 10px 10px 10px;
