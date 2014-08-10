@@ -9,12 +9,12 @@ require.config({
         }
     }
 });
-require(['zepto', 'screen', 'score'], function ($, Screen, Score) {
+require(['zepto', 'screen', 'score'], function ($, Screen, Score, Sound) {
 	var
 		screen = new Screen,
 		score = new Score,
         $pops = $('.js-pop'),
-        click = document.hasOwnProperty("ontouchstart") ? 'tap' : 'click';
+        click = document.hasOwnProperty("ontouchstart") ? 'tap' : 'click';        
 
     function updateShare(level, click) {
         var
@@ -48,7 +48,7 @@ require(['zepto', 'screen', 'score'], function ($, Screen, Score) {
         window.setTimeout(function () {
             $('#success-pop').hide();
         }, 2000);
-    }).on('screen/click', function () {
+    }).on('screen/click', function () {   	
     	score.addClick();
     }).on('score/hightLevel', function (e, level, click) {
         $('#success-pop').hide();

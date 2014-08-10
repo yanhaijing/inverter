@@ -1,6 +1,7 @@
-define(['zepto'], function ($) {
+define(['zepto', 'sound'], function ($, Sound) {
     'use strict';
     var
+    	sound = new Sound('media/click.wav'),
         Screen = function () {
             this.init();
         };
@@ -97,7 +98,8 @@ define(['zepto'], function ($) {
             }
             $screen.on(click, '.js-square', function (e) {
                 var $this = $(this);
-                clickCallback($this, self.$squares, self.n);
+                sound.play();
+                clickCallback($this, self.$squares, self.n);               
                 e.preventDefault();
             });          
         }
