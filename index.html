@@ -28,129 +28,155 @@
 	<body>
 		<div class="container">
 			<iframe src="http://rcm-cn.amazon-adsystem.com/e/cm?t=yanhaijing-23&o=28&p=48&l=ez&f=ifr&f=ifr" width="728" height="90" scrolling="no" marginwidth="0" marginheight="0" border="0" frameborder="0" style="border:none;max-width:100%;"></iframe>
-			<header>
-				<h1>
-					变色方块
-					<a id="share" class="share">分享</a>
-				</h1>
-			</header>
-			<aside class="score">
-				<ul>
-					<li>当前关卡：<span id="cur-level">1</span></li>
-					<li>历史最好：<span id="sup-level">1（0次点击）</span></li>
-					<li>当前点击：<span id="cur-click">0</span></li>
-					<li>总共点击：<span id="total-click">0</span></li>
-				</ul>
-			</aside>
-			<div class="menu">
-				<a id="pop-restart-level" class="btn btn-primary">重玩本关</a>
-				<a id="pop-restart-game" class="btn btn-primary">重玩游戏</a>
-				<a id="pop-intro" class="btn btn-primary">游戏介绍</a>
-			</div>
+
+			<header id="header"></header>
+			<script id="t:header" type="text/html">
+            <h1><%=data.h1%><a id="share" class="share"><%=data.share%></a></h1>
+            </script>
+
+			<aside id="score" class="score"></aside>
+			<script id="t:score" type="text/html">
+            <ul>
+                <li><%=data.currentLevel%><span id="cur-level">1</span></li>
+                <li><%=data.bestLevel%><span id="sup-level">1</span> <%=data.bestLevel1%><span id="sup-level-click">0</span> <%=data.bestLevel2%></li>
+                <li><%=data.currentClick%><span id="cur-click">0</span></li>
+                <li><%=data.totalClick%><span id="total-click">0</span></li>
+            </ul>
+			</script>
+
+			<div id="menu" class="menu"></div>
+			<script id="t:menu" type="text/html">
+			    <a id="pop-restart-level" class="btn btn-primary"><%=data.restartLevel%></a>
+                <a id="pop-restart-game" class="btn btn-primary"><%=data.restartGame%></a>
+                <a id="pop-intro" class="btn btn-primary"><%=data.intro%></a>
+			</script>
+
 			<section id="screen" class="screen"></section>
-            <aside class="download">
-                <h2>扫码下载到手机离线玩耍：</h2>
+
+            <aside id="download" class="download"></aside>
+            <script id="t:download" type="text/html">
+                <h2><%=data.h2%></h2>
                 <figure>
                     <img src="img/download-from-baidu.jpg">
-                    <figcaption><a href="http://gdown.baidu.com/data/wisegame/9caf14f898e49023/biansefangkuai_10100.apk" target="_blank" title="下载">安卓 Android</a></figcaption>
+                    <figcaption>
+                        <a href="http://gdown.baidu.com/data/wisegame/9caf14f898e49023/biansefangkuai_10100.apk" target="_blank" title="<%=data.title%>">Android</a>
+                    </figcaption>
                 </figure>
-            </aside>
-			<div class="ds-thread"></div>
+            </script>
+            
+            <div id="comment"></div>
+            <script id="t:comment" type="text/html">
+                <%if (data === 'duoshuo') {%>
+                <div class="ds-thread"></div>
+                <%} else {%>
+                <div id="disqus_thread"></div>
+                <%}%>
+            </script>
+			
 			<footer>
 				<p>copyright&copy;2014 <a href="http://yanhaijing.com" target="_blank">yanhaijing.com</a></p>
 			</footer>
-			<div id="restart-game-pop" class="pop js-pop">
-				<div class="pop-content">
-					<header>
-						<h2>重玩游戏？</h2>
-					</header>
-					<div class="pop-body">
-						会把你传送到第一关哦？（<strong>注意：</strong>不会清空最高分记录哦）
-					</div>
-					<footer>
-						<a id="restart-game" class="btn btn-success">好</a>
-					</footer>
-				</div>
-			</div>
-			<div id="restart-level-pop" class="pop js-pop">
-				<div class="pop-content">
-					<header>
-						<h2>重玩本关？</h2>
-					</header>
-					<div class="pop-body">
-						会把你传送到刚进入本关时的状态。
-					</div>
-					<footer>
-						<a id="restart-level" class="btn btn-success">好</a>
-					</footer>
-				</div>
-			</div>
-			<div id="intro-pop" class="pop js-pop">
-				<div class="pop-content">
-					<header>
-						<h2>游戏介绍</h2>
-					</header>
-					<div class="pop-body">
-						<ol>
-							<li>游戏玩法：点击色块，会改变其自身和上下左右相邻色块的颜色。</li>
-							<li>游戏规则：当全部色块变为蓝色，即为胜利。</li>
-						</ol>
-					</div>
-					<footer>
-						<a id="intro" class="btn btn-success">我知道了</a>
-					</footer>
-				</div>
-			</div>
-			<div id="success-pop" class="pop js-pop">
-				<div class="pop-content">
-					<header>
-						<h2>恭喜过关</h2>
-					</header>
-					<div class="pop-body js-pop-body">
-						即将进入第2关
-					</div>
-					<footer>
-						<a class="btn btn-success">马上进入</a>
-					</footer>
-				</div>
-			</div>
-			<div id="hightLevel-pop" class="pop js-pop">
-				<div class="pop-content">
-					<header>
-						<h2>新纪录</h2>
-					</header>
-					<div class="pop-body js-pop-body">
-						恭喜您创造了新记录
-					</div>
-					<footer>
-						<a class="btn btn-success">继续</a>
-						<a id="hight-share" class="btn btn-primary">分享</a>
-					</footer>
-				</div>
-			</div>
-			<div id="share-pop" class="pop js-pop">
-				<div class="pop-content">
-					<header>
-						<h2>分享</h2>
-					</header>
-					<div class="pop-body js-pop-body">
-						<p class="share-btn clearfix">
-							<a id="share-weibo" class="js-share-btn share-btn-weibo clearfix" href="http://service.weibo.com/share/share.php?url=http://yanhaijing.com/inverter&title=变色方块 史上最难智力游戏，相当有意思，快快来体验吧@颜海镜 &pic=http://yanhaijing.com/inverter/media/5.png" target="_blank">
-		                        <span>微博</span><em></em>
-		                    </a>
-		                    <a id="share-qq" class="js-share-btn share-btn-qq clearfix" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yanhaijing.com/inverter&desc=变色方块 史上最难智力游戏，相当有意思，快快来体验吧&title=变色方块 史上最难智力游戏&summary=变色方块 史上最难智力游戏&pic=http://yanhaijing.com/inverter/media/5.png" target="_blank">
-		                        <span>空间</span><em></em>
-		                    </a>
-		                    <a id="share-weixin" class="share-btn-weixin clearfix">
-		                        <span>微信</span><em></em>
-		                    </a>
-		                </p>
-					</div>
-					<footer>
-						<a class="btn btn-success">关闭</a>
-					</footer>
-				</div>
-			</div>
+
+			<div id="restart-game-pop" class="pop js-pop"></div>
+			<script id="t:restart-game-pop" type="text/html">
+                <div class="pop-content">
+                    <header>
+                        <h2><%=data.h2%></h2>
+                    </header>
+                    <div class="pop-body">
+                        <%:=data.body%>
+                    </div>
+                    <footer>
+                        <a id="restart-game" class="btn btn-success"><%=data.ok%></a>
+                    </footer>
+                </div>
+			</script>
+
+			<div id="restart-level-pop" class="pop js-pop"></div>
+			<script id="t:restart-level-pop" type="text/html">
+                <div class="pop-content">
+                    <header>
+                        <h2><%=data.h2%></h2>
+                    </header>
+                    <div class="pop-body">
+                        <%=data.body%>
+                    </div>
+                    <footer>
+                        <a id="restart-level" class="btn btn-success"><%=data.ok%></a>
+                    </footer>
+                </div>
+			</script>
+
+			<div id="intro-pop" class="pop js-pop"></div>
+			<script id="t:intro-pop" type="text/html">
+			    <div class="pop-content">
+                    <header>
+                        <h2><%=data.h2%></h2>
+                    </header>
+                    <div class="pop-body">
+                        <ol>
+                            <li><%=data.li1%></li>
+                            <li><%=data.li2%></li>
+                        </ol>
+                    </div>
+                    <footer>
+                        <a id="intro" class="btn btn-success"><%=data.ok%></a>
+                    </footer>
+                </div>
+			</script>
+			<div id="success-pop" class="pop js-pop"></div>
+			<script id="t:success-pop" type="text/html">
+			    <div class="pop-content">
+                    <header>
+                        <h2><%=data.h2%></h2>
+                    </header>
+                    <div class="pop-body js-pop-body">
+                        <%:=data.body%>
+                    </div>
+                    <footer>
+                        <a class="btn btn-success"><%=data.ok%></a>
+                    </footer>
+                </div>
+			</script>
+			<div id="hightLevel-pop" class="pop js-pop"></div>
+			<script id="t:hightLevel-pop" type="text/html">
+			    <div class="pop-content">
+                    <header>
+                        <h2><%=data.h2%></h2>
+                    </header>
+                    <div class="pop-body js-pop-body">
+                        <%=data.body%>
+                    </div>
+                    <footer>
+                        <a class="btn btn-success"><%=data.ok%></a>
+                        <a id="hight-share" class="btn btn-primary"><%=data.share%></a>
+                    </footer>
+                </div>
+			</script>
+			<div id="share-pop" class="pop js-pop"></div>
+			<script id="t:share-pop" type="text/html">
+			    <div class="pop-content">
+                    <header>
+                        <h2><%=data.h2%></h2>
+                    </header>
+                    <div class="pop-body js-pop-body">
+                        <p class="share-btn clearfix">
+                            <a id="share-weibo" class="js-share-btn share-btn-weibo clearfix" href="http://service.weibo.com/share/share.php?url=http://yanhaijing.com/inverter&title=变色方块 史上最难智力游戏，相当有意思，快快来体验吧@颜海镜 &pic=http://yanhaijing.com/inverter/media/5.png" target="_blank">
+                                <span><%=data.weibo%></span><em></em>
+                            </a>
+                            <a id="share-qq" class="js-share-btn share-btn-qq clearfix" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yanhaijing.com/inverter&desc=变色方块 史上最难智力游戏，相当有意思，快快来体验吧&title=变色方块 史上最难智力游戏&summary=变色方块 史上最难智力游戏&pic=http://yanhaijing.com/inverter/media/5.png" target="_blank">
+                                <span><%=data.qzone%></span><em></em>
+                            </a>
+                            <a id="share-weixin" class="share-btn-weixin clearfix">
+                                <span><%=data.weixin%></span><em></em>
+                            </a>
+                        </p>
+                    </div>
+                    <footer>
+                        <a class="btn btn-success"><%=data.ok%></a>
+                    </footer>
+                </div>
+			</script>
 		</div>
 		<div id="weixin-shade">
 			<div id="weixin-shade-qr">
@@ -172,7 +198,8 @@
 		</div>
 		<script src="js/require-min.js" data-main="js/main"></script>
 		<!-- Duoshuo Comment BEGIN -->
-		<script type="text/javascript">
+		<script id="t:duoshuo" type="text/html">
+	    <script>
 		var duoshuoQuery = {short_name:"yanhaijing"};
 			(function() {
 				var ds = document.createElement('script');
@@ -182,7 +209,20 @@
 				(document.getElementsByTagName('head')[0]
 				|| document.getElementsByTagName('body')[0]).appendChild(ds);
 			})();
-			</script>
+		</script>
+		</script>
+		<script id="t:disqus" type="text/html">
+	    <script type="text/javascript">
+            var disqus_developer = 1;
+            var disqus_shortname = 'yanhaijing'; // required: replace example with your forum shortname            
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+		</script>
 		<!-- Duoshuo Comment END -->
 		<script src="js/baidu.js"></script>
 	</body>

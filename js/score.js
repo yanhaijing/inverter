@@ -18,6 +18,7 @@ define(['zepto', 'storage'], function ($, Storage) {
     			totalClick = parseInt(storage.load('totalClick'), 10) || 0,
     			$curLevel = $('#cur-level'),
     			$supLevel = $('#sup-level'),
+    			$supClick = $('#sup-level-click'),
     			$curClick = $('#cur-click'),
     			$totalClick = $('#total-click');
 
@@ -29,6 +30,7 @@ define(['zepto', 'storage'], function ($, Storage) {
 
 			this.$curLevel = $curLevel;
     		this.$supLevel = $supLevel;
+    		this.$supClick = $supClick;
     		this.$curClick = $curClick;
     		this.$totalClick = $totalClick;
 
@@ -93,7 +95,8 @@ define(['zepto', 'storage'], function ($, Storage) {
 		},
     	updateView: function () {
     		this.$curLevel.html(this.curLevel);
-    		this.$supLevel.html(this.supLevel + '(' + this.supClick + '次点击)');
+    		this.$supLevel.html(this.supLevel);
+    		this.$supClick.html(this.supClick);
     		this.$curClick.html(this.curClick);
     		this.$totalClick.html(this.totalClick);
     	}

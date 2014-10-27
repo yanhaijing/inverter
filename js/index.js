@@ -6,15 +6,61 @@ require.config({
     shim:{
         'zepto': {
             exports: 'Zepto'
+        },
+        'baiduTemplate': {
+            exports: 'baidu.template'
         }
     }
 });
-require(['zepto', 'screen', 'score'], function ($, Screen, Score, Sound) {
-	var
-		screen = new Screen,
-		score = new Score,
-        $pops = $('.js-pop'),
-        click = document.hasOwnProperty("ontouchstart") ? 'tap' : 'click';        
+require(['zepto', 'screen', 'score', 'i18n!nls/data', 'baiduTemplate'], function ($, Screen, Score, data, bt) {
+
+    function initData() {
+        var html;
+        
+        document.title = data.title;
+        
+        html = bt('t:header', {data: data.header});
+        $('#header').html(html);
+        
+        html = bt('t:score', {data: data.score});
+        $('#score').html(html);
+        
+        html = bt('t:menu', {data: data.menu});
+        $('#menu').html(html);
+        
+        html = bt('t:download', {data: data.download});
+        $('#download').html(html);
+        
+        html = bt('t:restart-game-pop', {data: data.restartGamePop});
+        $('#restart-game-pop').html(html);
+        
+        html = bt('t:restart-level-pop', {data: data.restartLevelPop});
+        $('#restart-level-pop').html(html);
+        
+        html = bt('t:success-pop', {data: data.successPop});
+        $('#success-pop').html(html);
+        
+        html = bt('t:hightLevel-pop', {data: data.hightLevelPop});
+        $('#hightLevel-pop').html(html);
+        
+        html = bt('t:share-pop', {data: data.sharePop});
+        $('#share-pop').html(html);
+        
+        html = bt('t:intro-pop', {data: data.introPop});
+        $('#intro-pop').html(html);
+        
+        html = bt('t:comment', {data: data.comment});
+        $('#comment').html(html);
+        
+        $('body').append(document.getElementById('t:' + data.comment).innerHTML);
+    }
+    initData();
+
+
+	var	screen = new Screen;
+	var	score = new Score;
+    var $pops = $('.js-pop');
+    var click = document.hasOwnProperty("ontouchstart") ? 'tap' : 'click';
 
     function updateShare(level, click) {
         var
@@ -34,6 +80,8 @@ require(['zepto', 'screen', 'score'], function ($, Screen, Score, Sound) {
         $('.ds-thread textarea').val(duoshuo);
         document.title = title;
     }
+
+
     $(function () {
     	var level = score.getLevel();
     	screen.create(level);
@@ -43,12 +91,12 @@ require(['zepto', 'screen', 'score'], function ($, Screen, Score, Sound) {
         var level;
         $('#success-pop').show();
     	level = score.addLevel();
-        $('#success-pop').find('.js-pop-body').html('即将进入第' + level + '关')
+        $('#success-pop-level').html(level);
         screen.create(level);
         window.setTimeout(function () {
             $('#success-pop').hide();
         }, 2000);
-    }).on('screen/click', function () {   	
+    }).on('screen/click', function () {
     	score.addClick();
     }).on('score/hightLevel', function (e, level, click) {
         $('#success-pop').hide();
