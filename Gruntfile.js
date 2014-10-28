@@ -287,7 +287,8 @@ module.exports = function(grunt) {
         options: {
           baseUrl: '<%= pkg.path.src.js %>',
           paths: {
-            zepto: "empty:"
+            zepto: "empty:",
+            baiduTemplate: "empty:"
           },
           name: 'weixin', // assumes a production build using almond
           out: '<%= pkg.path.build.js %>weixin-main.js'

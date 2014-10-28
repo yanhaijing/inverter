@@ -6,16 +6,50 @@ require.config({
     shim:{
         'zepto': {
             exports: 'Zepto'
+        },
+        'baiduTemplate': {
+            exports: 'baidu.template'
         }
     }
 });
-require(['zepto', 'screen', 'score'], function ($, Screen, Score) {
-	var
-		screen = new Screen,
-		score = new Score,
+require(['zepto', 'screen', 'score', 'i18n!nls/data', 'baiduTemplate'], function ($, Screen, Score, data, bt) {	
+    function initData() {
+        var html;
+        
+        document.title = data.title;
+        
+        html = bt('t:header', {data: data.header});
+        $('#header').html(html);
+        
+        html = bt('t:score', {data: data.score});
+        $('#score').html(html);
+        
+        html = bt('t:menu', {data: data.menu});
+        $('#menu').html(html);
+        
+        html = bt('t:restart-game-pop', {data: data.restartGamePop});
+        $('#restart-game-pop').html(html);
+        
+        html = bt('t:restart-level-pop', {data: data.restartLevelPop});
+        $('#restart-level-pop').html(html);
+        
+        html = bt('t:success-pop', {data: data.successPop});
+        $('#success-pop').html(html);
+        
+        html = bt('t:hightLevel-pop', {data: data.hightLevelPop});
+        $('#hightLevel-pop').html(html);
+        
+        html = bt('t:intro-pop', {data: data.introPop});
+        $('#intro-pop').html(html);
+    }
+    initData();
+    
+    var
+        screen = new Screen,
+        score = new Score,
         $pops = $('.js-pop'),
         click = 'tap';
-
+        
     function updateShare(level, click) {
         var title = '史上最难智力游戏，我逆天用了' + click + '次点击，通过了第' + (level - 1) + '关，你，你，你快快来挑战我吧';
         document.title = title;
