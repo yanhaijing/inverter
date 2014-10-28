@@ -63,7 +63,7 @@ require(['zepto', 'screen', 'score', 'i18n!nls/data', 'baiduTemplate'], function
         var level;
         $('#success-pop').show();
     	level = score.addLevel();
-        $('#success-pop').find('.js-pop-body').html('即将进入第' + level + '关')
+        $('#success-pop-level').html(level);
         screen.create(level);
         window.setTimeout(function () {
             $('#success-pop').hide();
